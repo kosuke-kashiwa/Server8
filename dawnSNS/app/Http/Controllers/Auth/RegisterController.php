@@ -52,8 +52,15 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255',
             'mail' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
-        ]);
+        ],
+        [
+            'username.required' => '名前を入力してください',
+            'mail.required' => 'アドレスを入力してください',
+            'password' => 'パスワードを入力してください'
+        ]
+          );
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -86,6 +93,9 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        return view('auth.added');
+         
+         $user = \DB::table('users')->get('username');
+        
+        return view('auth.added',['user'=>$user]);
     }
 }
