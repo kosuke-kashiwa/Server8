@@ -15,8 +15,8 @@ class PostsController extends Controller
     public function index(User $user){
         $auths = Auth::user();
         // dd($auths);
-        $list = Post::get()
-              ->orderBy('created_at','desc');
+        $list = Post::get();
+            //   ->orderBy('created_at','desc');
 
         return view('posts.index',['list' => $list]);
     }
