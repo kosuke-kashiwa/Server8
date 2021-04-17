@@ -20,6 +20,9 @@
 
 
 //ログアウト中のページ
+
+use App\Http\Controllers\PostsController;
+
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
@@ -34,10 +37,10 @@ Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@search');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
-
+Route::post('post/create','PostsController@create');
 
